@@ -1,0 +1,8 @@
+{
+  "name": "RetailiQo Marketplace Pro",
+  "description": "A smart B2B/B2C retail sourcing platform featuring AI-driven insights, product recognition, and intelligent business tools to connect retailers with verified suppliers.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}
