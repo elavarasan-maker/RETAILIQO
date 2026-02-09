@@ -109,6 +109,10 @@ export const dataService = {
         .select('*')
         .eq('merchant_mobile', mobile)
         .order('date', { ascending: false });
+      return [
+  { id: "1", product: "Rice Bag", status: "Dispatched" },
+  { id: "2", product: "Sugar", status: "Pending" },
+];
       return { data: data || [], error };
     } catch (e) {
       return { data: [], error: e };
