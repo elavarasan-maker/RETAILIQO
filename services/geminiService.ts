@@ -1,8 +1,9 @@
 import { GoogleGenAI } from "@google/genai";
 
-const getAI = () => {
-  return new GoogleGenAI({ apiKey: process.env.API_KEY });
-};
+const getAIClient = () =>
+  new GoogleGenAI({
+    apiKey: import.meta.env.VITE_GEMINI_API_KEY,
+  });
 
 export const getNegotiationStrategy = async (productName: string, mrp: number, currentPrice: number, qty: number) => {
   const ai = getAI();
