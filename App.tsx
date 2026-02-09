@@ -157,22 +157,21 @@ const App: React.FC = () => {
     setCurrentView(AppView.DASHBOARD);
   };
 
-  const handleRequestQuote = async (product: Product) => {
-    if (!user.isSubscribed) return;
-    const newQuote: Quote = {
-      id: `QT-${Math.floor(1000 + Math.random() * 9000)}`,
-      productId: product.id,
-      productName: product.name,
-      supplierName: product.supplierName,
-      requestedQty: product.minOrderQty * 5,
-      status: 'Pending',
-      quotedPrice: product.price,
-      originalPrice: product.price,
-      date: new Date().toLocaleDateString(),
-      chatHistory: [
-        { role: 'model', text: `Hello ${user.name}! We've received your bulk request for ${product.name}. Our current best price for ${product.minOrderQty * 5} units is ₹${product.price}/unit.` }
-      ]
-    };
+const handleRequestQuote = (product: Product) => {
+  const newQuote: Quote = {
+    id: Date.now().toString(),
+    productName: product.name,
+    supplierName: product.supplier || "Supplier",
+    quotedPrice: product.price,
+    status: "Pending",
+    date: new Date().toLocaleDateString(),
+    chatHistory: [],
+  };
+
+  setQuotes(prev => [...prev, newQuote]);
+  setCurrentView(AppView.QUOTES);
+};
+
     await dataService.createQuote(newQuote, user.mobile);
     setQuotes(prev => [newQuote, ...prev]);
     alert("Quote request sent!");
