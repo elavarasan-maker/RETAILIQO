@@ -379,5 +379,5 @@ const InputField = ({ label, value, onChange, placeholder }: InputFieldProps) =>
     <input required className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 outline-none text-sm font-bold" placeholder={placeholder} value={value} onChange={e => onChange(e.target.value)} />
   </div>
 );
-
+}
 export default App;
